@@ -1,5 +1,5 @@
 {
-  "name": "google-calendar-link-generator-2",
+  "name": "google-calendar-link-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

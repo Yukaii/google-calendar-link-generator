@@ -10,10 +10,17 @@ import FilledInput from './components/FilledInput';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import IconButton from '@material-ui/core/IconButton';
 
 import DateFnsAdapter from '@material-ui/pickers/adapter/date-fns';
 import enLocale from 'date-fns/locale/en-US';
-import { DatePicker, DateTimePicker, LocalizationProvider } from '@material-ui/pickers';
+import {
+  DatePicker,
+  DateTimePicker,
+  LocalizationProvider,
+} from '@material-ui/pickers';
 
 import EventIcon from '@material-ui/icons/Event';
 import QueryBuilder from '@material-ui/icons/QueryBuilder';
@@ -27,11 +34,9 @@ import grey from '@material-ui/core/colors/grey';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: blue[50],
+      main: blue[700]
     },
-    secondary: {
-      main: grey[50],
-    },
+    secondary: grey
   },
 });
 
@@ -43,7 +48,7 @@ const App = () => {
     setFullDay(event.target.checked);
   };
 
-  const PickerComponent = fullDay ? DatePicker : DateTimePicker
+  const PickerComponent = fullDay ? DatePicker : DateTimePicker;
 
   return (
     <ThemeProvider theme={theme}>
@@ -92,12 +97,13 @@ const App = () => {
 
             <Box
               display="flex"
-              alignItems="center"
+              alignItems="flex-start"
               flexWrap="nowrap"
               style={{ marginTop: theme.spacing(2) }}
             >
               <QueryBuilder
                 style={{
+                  paddingTop: theme.spacing(2.5),
                   marginRight: theme.spacing(2.5),
                   color: 'rgba(0, 0, 0, 54%)',
                 }}
@@ -123,7 +129,10 @@ const App = () => {
                 />
 
                 <FormControlLabel
-                  style={{ marginLeft: theme.spacing(2), marginBottom: theme.spacing(2) }}
+                  style={{
+                    marginLeft: theme.spacing(2),
+                    marginBottom: theme.spacing(2),
+                  }}
                   control={
                     <Checkbox
                       checked={fullDay}
@@ -165,6 +174,23 @@ const App = () => {
                 placeholder="活動說明"
                 rows={5}
               />
+            </Box>
+
+            <Box
+              display="flex"
+              alignItems="center"
+              flexWrap="nowrap"
+              style={{ marginLeft: theme.spacing(5.5), marginTop: theme.spacing(3) }}
+            >
+              <Button variant="contained" color="primary">
+                產生連結
+              </Button>
+
+              <IconButton style={{ margin: theme.spacing(0, 3) }}>
+                <FileCopyOutlinedIcon />
+              </IconButton>
+
+              <FilledInput disabled style={{ flex: 1 }} />
             </Box>
           </Paper>
         </Box>
